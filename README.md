@@ -20,4 +20,4 @@ SEMPRE QUE INICIAR RODE:
 
 PARA RODAR O SERVER:
 
-    python servidor.py
+    python manage.py runserver
