@@ -21,3 +21,27 @@ SEMPRE QUE INICIAR RODE:
 PARA RODAR O SERVER:
 
     python manage.py runserver
+
+
+Divisão de tarefas:
+
+Vitor: 
+index
+archive-equipe
+
+Gabriel:
+single-membros
+archive-parceiros
+single-parceiro
+
+luan:
+atividades
+
+thiago araujo:
+participe
+
+thiago henrique:
+contato
+
+A decidir:
+noticias

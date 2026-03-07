@@ -25,8 +25,5 @@ def participe(request):
 def noticias(request):
     return render(request, 'archive-noticia.html')
 
-def noticia_detalhe(request, slug):
-    return render(request, 'single-noticia.html')
-
 def contato(request):
     return render(request, 'contato.html')

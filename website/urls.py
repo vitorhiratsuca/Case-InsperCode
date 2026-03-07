@@ -26,9 +26,6 @@ urlpatterns = [
 
     # Noticias 
     path('noticias/', views.noticias, name='noticias'),
-    
-    # Noticia Single    
-    path('noticias/<slug:slug>/', views.noticia_detalhe, name='noticia'),
 
     # Contato
     path('contato/', views.contato, name='contato'),
