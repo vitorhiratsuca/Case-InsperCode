@@ -1,1 +1,88 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/equipe.css' %}" />
+
+<div class="single-member-container">
+
+    <a href="{% url 'equipe' %}" class="back-link">
+        ← Voltar para Equipe
+    </a>
+
+    <div class="member-layout">
+
+        <div class="member-photo">
+            {% if member.photo_url %}
+            <img src="{{ member.photo_url.url }}" alt="{{ member.name }}">
+            {% else %}
+            <img src="{% static 'team/placeholder-member.svg' %}" alt="Foto não disponível">
+            {% endif %}
+        </div>
+
+        <div class="member-content">
+
+            <h1>{{ member.name }}</h1>
+
+            <div class="member-role">
+                Membro do Insper Consulting Club
+            </div>
+
+            <div class="member-divider"></div>
+
+            <div class="member-bio">
+                {{ member.biography }}
+            </div>
+
+            <div class="member-stats">
+
+                <div class="stat-box">
+                    <span class="stat-number">{{ member.number_of_projects }}</span>
+                    <span class="stat-label">Projetos</span>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-number">{{ member.hours }}</span>
+                    <span class="stat-label">Horas dedicadas</span>
+                </div>
+
+                
+                <div class="stat-box">
+                    <span class="stat-number">{{ member.entry_date|date:"d/m/Y" }}</span>
+                    <span class="stat-label">Data de entrada</span>
+                </div>
+                {% if member.exit_date %}
+                <div class="stat-box">
+                    <span class="stat-number">{{ member.exit_date|date:"d/m/Y" }}</span>
+                    <span class="stat-label">Data de saída</span>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <div class="member-contact">
+
+                <h3>Contato</h3>
+
+                <div class="contact-buttons">
+
+                    <a href="mailto:{{ member.name|lower|slugify }}@insper.edu.br">
+                        Email
+                    </a>
+
+                    <a href="#">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{% static 'js/equipe.js' %}"></script>
+{% endblock %}
