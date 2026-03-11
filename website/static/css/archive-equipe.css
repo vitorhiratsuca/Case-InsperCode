@@ -2,12 +2,12 @@
 .equipe-hero {
     background: linear-gradient(
         135deg,
-        #cf2d2d,
-        #b20000,
-        #7b001e,
-        #5a0f1b
+        var(--gradient-1),
+        var(--gradient-2),
+        var(--gradient-3),
+        var(--gradient-4)
     );
-    color: #ffffff;
+    color: var(--white);
     text-align: center;
     padding: 200px 8% 100px;
 }
@@ -26,7 +26,7 @@
     font-size: 52px;
     font-weight: 700;
     line-height: 1.15;
-    color: #ffffff;
+    color: var(--white);
     margin-bottom: 20px;
 }
 
@@ -40,9 +40,9 @@
 
 /* --- FILTERS --- */
 .equipe-filters {
-    background-color: #f5f5f5;
+    background-color: var(--gray-100);
     padding: 50px 8%;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--gray-200);
 }
 
 .filters-bar {
@@ -63,7 +63,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #666666;
+    color: var(--gray-500);
 }
 
 .filter-pills {
@@ -74,9 +74,9 @@
 
 .pill {
     padding: 7px 16px;
-    border: 1px solid #cccccc;
-    background: #ffffff;
-    color: #333333;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    color: var(--gray-700);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -86,30 +86,30 @@
 }
 
 .pill:hover {
-    border-color: #b20000;
-    color: #b20000;
+    border-color: var(--primary-red);
+    color: var(--primary-red);
 }
 
 .pill.active {
-    background-color: #b20000;
-    border-color: #b20000;
-    color: #ffffff;
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+    color: var(--white);
 }
 
 .results-count {
     margin-top: 24px;
     font-size: 13px;
-    color: #666666;
+    color: var(--gray-500);
 }
 
 .results-count span {
     font-weight: 700;
-    color: #b20000;
+    color: var(--primary-red);
 }
 
 /* --- GRID SECTION --- */
 .equipe-grid-section {
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 80px 8%;
 }
 
@@ -122,8 +122,8 @@
 /* --- MEMBER CARD --- */
 .member-card {
     display: block;
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
@@ -132,7 +132,7 @@
 
 .member-card:hover {
     transform: translateY(-6px);
-    border-color: #b20000;
+    border-color: var(--primary-red);
     box-shadow: 0 12px 30px rgba(178, 0, 0, 0.12);
 }
 
@@ -142,7 +142,7 @@
     width: 100%;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background-color: #f5f5f5;
+    background-color: var(--gray-100);
 }
 
 .member-photo img {
@@ -191,7 +191,7 @@
 }
 
 .view-profile {
-    color: #ffffff;
+    color: var(--white);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -205,13 +205,13 @@
 .member-info h4 {
     font-size: 17px;
     font-weight: 700;
-    color: #111111;
+    color: var(--gray-900);
     margin-bottom: 4px;
 }
 
 .member-position {
     font-size: 13px;
-    color: #b20000;
+    color: var(--primary-red);
     font-weight: 600;
     margin-bottom: 14px;
 }
@@ -225,7 +225,7 @@
 
 .meta-item {
     font-size: 12px;
-    color: #666666;
+    color: var(--gray-500);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -233,7 +233,7 @@
 
 .meta-item i {
     font-size: 11px;
-    color: #999999;
+    color: var(--gray-500);
 }
 
 /* Badges */
@@ -250,19 +250,19 @@
 
 .badge-active {
     background-color: rgba(178, 0, 0, 0.08);
-    color: #b20000;
+    color: var(--primary-red);
 }
 
 .badge-alumni {
-    background-color: #f0f0f0;
-    color: #666666;
+    background-color: var(--gray-100);
+    color: var(--gray-500);
 }
 
 /* --- EMPTY / NO RESULTS --- */
 .empty-state {
     grid-column: 1 / -1;
     text-align: center;
-    color: #666666;
+    color: var(--gray-500);
     font-size: 16px;
     padding: 60px 0;
 }
@@ -277,25 +277,25 @@
 
 .no-results i {
     font-size: 48px;
-    color: #cccccc;
+    color: var(--gray-200);
 }
 
 .no-results p {
     font-size: 16px;
-    color: #666666;
+    color: var(--gray-500);
 }
 
 /* --- CTA FINAL --- */
 .equipe-cta {
-    background-color: #111111;
-    color: #ffffff;
+    background-color: var(--gray-900);
+    color: var(--white);
     text-align: center;
     padding: 100px 8%;
 }
 
 .equipe-cta h2 {
     font-size: 36px;
-    color: #ffffff;
+    color: var(--white);
     margin-bottom: 16px;
 }
 

@@ -12,8 +12,8 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--white);
+    color: var(--black);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
@@ -52,7 +52,7 @@ body {
 .icc-logo a {
     font-weight: 700;
     font-size: 18px;
-    color: #000000;
+    color: var(--black);
     text-decoration: none;
 }
 
@@ -66,30 +66,30 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    color: #333333;
+    color: var(--gray-700);
     transition: 0.2s ease;
 }
 
 .icc-nav a:hover {
-    color: #b20000;
+    color: var(--primary-red);
 }
 
 .icc-cta {
     padding: 7px 14px;
-    background-color: #b20000;
-    color: #ffffff !important;
+    background-color: var(--primary-red);
+    color: var(--white) !important;
     border-radius: 6px;
     font-weight: 600;
 }
 
 .icc-cta:hover {
-    background-color: #8f0000;
+    background-color: #7b001e;
 }
 
 .icc-footer {
     margin-top: auto;
-    background-color: #111111;
-    color: #ffffff;
+    background-color: var(--gray-900);
+    color: var(--white);
     padding: 60px 8%;
     left: 0;
     right: 0; 
@@ -133,7 +133,7 @@ body {
     height: 60px;
     border-radius: 50%;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--white);
     font-size: 26px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -260,7 +260,7 @@ p {
 }
 
 .btn-primary:hover {
-    background-color: #8f0000;
+    background-color: #7b001e;
 }
 
 .btn-secondary {

@@ -67,7 +67,7 @@
     <div class="container">
         <div class="team-grid" id="team-grid">
             {% for member in members %}
-            <a href="{% url 'perfil_membro' member.name %}"
+            <a href="{% url 'perfil_membro' member.id %}"
                class="member-card"
                data-position="{{ member.position.id }}"
                data-year="{{ member.entry_date.year }}"

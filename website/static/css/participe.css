@@ -1,6 +1,6 @@
 .participe-container {
     padding-top: 140px;
-    background: #ffffff;
+    background: var(--white);
 }
 
 .participe-intro {
@@ -89,7 +89,7 @@
 
 .participe-form {
     margin-top: 30px;
-    background: #ffffff;
+    background: var(--white);
     padding: 40px;
     border-radius: 16px;
     border: 1px solid var(--gray-200);
@@ -137,7 +137,7 @@
     margin-top: 15px;
     padding: 14px 28px;
     background: var(--primary-red);
-    color: #ffffff;
+    color: var(--white);
     font-weight: 600;
     border: none;
     border-radius: 8px;
@@ -146,7 +146,7 @@
 }
 
 .form-submit:hover {
-    background: #8f0000;
+    background: #7b001e;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(178, 0, 0, 0.25);
 }
@@ -174,7 +174,7 @@
 }
 
 .faq-item {
-    background: #ffffff;
+    background: var(--white);
     padding: 25px 30px;
     border-radius: 14px;
     border: 1px solid var(--gray-200);

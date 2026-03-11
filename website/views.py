@@ -26,8 +26,8 @@ def equipe_index(request):
     })
 
 @require_http_methods(["GET"])
-def perfil_membro(request, nome):
-    member = get_object_or_404(Team_Member, name=nome)
+def perfil_membro(request, id):
+    member = get_object_or_404(Team_Member, id=id)
     return render(request, 'single-equipe.html', {'member': member})
 
 def atividades(request):

@@ -1,8 +1,8 @@
 
 .hero .btn-primary {
     background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    color: var(--white);
+    border: 2px solid var(--white);
     margin-top: 100px;
 }
 
@@ -37,7 +37,7 @@
     font-size: 80px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.2;
     letter-spacing: -1px;
 }
@@ -61,7 +61,7 @@
 }
 
 .stats {
-    background: linear-gradient(135deg, #f5f5f5, #ffffff);
+    background: linear-gradient(135deg, var(--gray-100), var(--white));
     padding: 80px 8%;
 }
 
@@ -82,9 +82,9 @@
 .stat-item {
     text-align: center;
     padding: 30px 20px;
-    background: #ffffff;
+    background: var(--white);
     border-radius: 12px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
 }
 
@@ -199,8 +199,8 @@
 /* --- MEMBER CARD --- */
 .member-card {
     display: block;
-    background-color: #ffffff;
-    border: 1px solid #e5e5e5;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
@@ -219,7 +219,7 @@
     width: 100%;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background-color: #f5f5f5;
+    background-color: var(--gray-100);
 }
 
 .member-photo img {
@@ -241,7 +241,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #cf2d2d, #7b001e);
+    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-3));
 }
 
 .member-photo-placeholder span {
@@ -268,7 +268,7 @@
 }
 
 .view-profile {
-    color: #ffffff;
+    color: var(--white);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -282,7 +282,7 @@
 .member-info h4 {
     font-size: 17px;
     font-weight: 700;
-    color: #111111;
+    color: var(--gray-900);
     margin-bottom: 4px;
 }
 

@@ -109,7 +109,7 @@
 
         <div class="team-grid">
             {% for member in members %}
-            <a href="{% url 'perfil_membro' member.name %}" class="member-card">
+            <a href="{% url 'perfil_membro' member.id %}" class="member-card">
                 <div class="member-photo">
                     {% if member.photo_url %}
                         <img src="{{ member.photo_url.url }}" alt="{{ member.name }}">

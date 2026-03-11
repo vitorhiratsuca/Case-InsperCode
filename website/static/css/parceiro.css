@@ -3,7 +3,7 @@
     max-width: 1400px;
     margin: 80px auto;
     padding: 100px 60px;
-    background: #ffffff;
+    background: var(--white);
 }
 
 .archive-header {
@@ -21,7 +21,7 @@
     font-size: 1.2rem;
     max-width: 750px;
     line-height: 1.8;
-    color: #333;
+    color: var(--gray-700);
 }
 
 .filter-container {
@@ -32,8 +32,8 @@
 
 .filter-btn {
     padding: 10px 24px;
-    border: 1px solid #000;
-    background: #fff;
+    border: 1px solid var(--black);
+    background: var(--white);
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -42,8 +42,8 @@
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: #000;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
 }
 
 .partners-grid {
@@ -57,14 +57,14 @@
     grid-template-columns: 260px 1fr;
     gap: 60px;
     padding-bottom: 50px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--gray-200);
     text-decoration: none;
     color: inherit;
     transition: 0.3s ease;
 }
 
 .partner-card:hover {
-    border-color: #b20000;
+    border-color: var(--primary-red);
 }
 
 .partner-card-image {
@@ -88,7 +88,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #666;
+    color: var(--gray-500);
     margin-bottom: 15px;
     display: block;
 }
@@ -98,7 +98,7 @@
     line-height: 1.8;
     margin-bottom: 25px;
     max-width: 650px;
-    color: #444;
+    color: var(--gray-700);
 }
 
 .partner-cta {
@@ -114,7 +114,7 @@
     bottom: -6px;
     width: 0;
     height: 2px;
-    background: #b20000;
+    background: var(--primary-red);
     transition: 0.3s ease;
 }
 
@@ -126,7 +126,7 @@
     display: inline-block;
     margin-bottom: 70px;
     font-weight: 600;
-    color: #b20000;
+    color: var(--primary-red);
     text-decoration: none;
 }
 
@@ -154,7 +154,7 @@
     left: 0;
     width: 100%;
     height: 5px;
-    background: #b20000;
+    background: var(--primary-red);
 }
 
 .partner-info h1 {
@@ -166,7 +166,7 @@
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #666;
+    color: var(--gray-500);
     margin-bottom: 30px;
 }
 
@@ -193,14 +193,14 @@
 }
 
 .project-card {
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     padding: 40px;
     transition: 0.3s ease;
 }
 
 .project-card:hover {
-    border-color: #b20000;
+    border-color: var(--primary-red);
     transform: translateY(-6px);
     box-shadow: 0 12px 30px rgba(178, 0, 0, 0.08);
 }
@@ -213,7 +213,7 @@
 .project-card p {
     font-size: 1rem;
     line-height: 1.7;
-    color: #444;
+    color: var(--gray-700);
 }
 @media (max-width: 1100px) {
 

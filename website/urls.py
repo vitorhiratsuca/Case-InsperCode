@@ -10,7 +10,7 @@ urlpatterns = [
     path('equipe/', views.equipe_index, name='equipe'),
 
     # Equipe Single
-    path('equipe/<slug:nome>/', views.perfil_membro, name='perfil_membro'),
+    path('equipe/<int:id>/', views.perfil_membro, name='perfil_membro'),
 
     # Atividades 
     path('atividades/', views.atividades, name='atividades'),
