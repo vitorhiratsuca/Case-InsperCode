@@ -24,7 +24,9 @@
   <header class="icc-header">
     <div class="icc-header-container">
       <div class="icc-logo">
-        <a href="/">ICC</a>
+        <a href="/">
+          <img src="{% static 'img/icc-logo.png' %}" alt="Insper Consulting Club">
+        </a>
       </div>
 
       <nav class="icc-nav">
@@ -70,5 +72,7 @@
       <i class="fab fa-instagram"></i>
     </a>
   </div>
+
+  {% block extra_js %}{% endblock %}
 </body>
 </html>

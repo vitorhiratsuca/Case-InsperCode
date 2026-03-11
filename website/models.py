@@ -102,5 +102,21 @@ class Media(models.Model):
 
     def __str__(self):
         return self.title
+
+class Statistic(models.Model):
+    '''
+    Modelo para as estatísticas da página inicial:
+    Valor (ex: +10, 3x, 3º) e Descrição (ex: Anos de história)
+    '''
+    value = models.CharField(max_length=50, verbose_name='Valor/Número')
+    description = models.CharField(max_length=200, verbose_name='Descrição')
+    order = models.IntegerField(default=0, verbose_name='Ordem de exibição')
+
+    class Meta:
+        verbose_name_plural = 'Estatísticas'
+        ordering = ['order']
+
+    def __str__(self):
+        return f"{self.value} - {self.description}"
     
     

@@ -23,38 +23,12 @@
     <div class="container">
         <h2>Nossos Números</h2>
         <div class="stats-grid">
+            {% for stat in statistics %}
             <div class="stat-item">
-                <h3>+10</h3>
-                <p>Anos de história</p>
+                <h3>{{ stat.value }}</h3>
+                <p>{{ stat.description }}</p>
             </div>
-            <div class="stat-item">
-                <h3>3x</h3>
-                <p>Pódio em competições nacionais</p>
-            </div>
-            <div class="stat-item">
-                <h3>+20</h3>
-                <p>Empresas parceiras</p>
-            </div>
-            <div class="stat-item">
-                <h3>+80</h3>
-                <p>Membros formados</p>
-            </div>
-            <div class="stat-item">
-                <h3>17</h3>
-                <p>Membros ativos</p>
-            </div>
-            <div class="stat-item">
-                <h3>+150</h3>
-                <p>Horas de consultoria</p>
-            </div>
-            <div class="stat-item">
-                <h3>+15</h3>
-                <p>Projetos realizados</p>
-            </div>
-            <div class="stat-item">
-                <h3>3º</h3>
-                <p>Colocação nacional recente</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -132,26 +106,29 @@
         <h2>Gestão Atual</h2>
 
         <div class="team-grid">
-            <div class="member-card">
-                <img src="/static/img/membro1.jpg" alt="Nome Membro">
-                <h4>Nome Sobrenome</h4>
-                <p>Presidente</p>
-            </div>
-
-            <div class="member-card">
-                <img src="/static/img/membro2.jpg" alt="Nome Membro">
-                <h4>Nome Sobrenome</h4>
-                <p>Diretor de Projetos</p>
-            </div>
-
-            <div class="member-card">
-                <img src="/static/img/membro3.jpg" alt="Nome Membro">
-                <h4>Nome Sobrenome</h4>
-                <p>Diretor de Pessoas</p>
-            </div>
+            {% for member in members %}
+            <a href="{% url 'perfil_membro' member.name %}" class="member-card">
+                <div class="member-photo">
+                    {% if member.photo_url %}
+                        <img src="{{ member.photo_url.url }}" alt="{{ member.name }}">
+                    {% else %}
+                        <div class="member-photo-placeholder">
+                            <span>{{ member.name|slice:":1" }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="member-overlay">
+                        <span class="view-profile">Ver perfil →</span>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>{{ member.name }}</h4>
+                    <p class="member-position">{{ member.position.title }}</p>
+                </div>
+            </a>
+            {% endfor %}
         </div>
 
-        <a href="" class="btn-secondary">Conheça nossa equipe</a>
+        <a href="{% url 'equipe' %}" class="btn-secondary">Conheça nossa equipe</a>
     </div>
 </section>
 

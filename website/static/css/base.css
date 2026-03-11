@@ -40,6 +40,12 @@ body {
     padding: 12px 25px;
 }
 
+.icc-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
 .icc-logo a {
     font-weight: 700;
     font-size: 18px;
