@@ -1,23 +1,50 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.decorators.http import require_http_methods
+from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic
 
-# Create your views here.
+@require_http_methods(["GET"])
 def index(request):
-    return render(request, 'index.html')
+    members = Team_Member.objects.filter(exit_date__isnull=True).order_by('position__power', 'name')[:6]
+    statistics = Statistic.objects.all().order_by('order')
+    return render(request, 'index.html', {'members': members, 'statistics': statistics})
 
+@require_http_methods(["GET"])
 def equipe_index(request):
-    return render(request, 'archive-equipe.html')
+    members = Team_Member.objects.all().order_by('position__power', 'name')
+    positions = Member_Position.objects.all().order_by('power')
+    entry_years = (
+        Team_Member.objects
+        .dates('entry_date', 'year')
+        .values_list('entry_date__year', flat=True)
+        .distinct()
+        .order_by('entry_date__year')
+    )
+    return render(request, 'archive-equipe.html', {
+        'members': members,
+        'positions': positions,
+        'entry_years': entry_years,
+    })
 
+@require_http_methods(["GET"])
 def perfil_membro(request, nome):
-    return render(request, 'single-equipe.html')
+    member = get_object_or_404(Team_Member, name=nome)
+    return render(request, 'single-equipe.html', {'member': member})
 
 def atividades(request):
     return render(request, 'atividades.html')
 
+@require_http_methods(["GET"])
 def parceiros_index(request):
-   return render(request, 'archive-parceiro.html')
+    partners = Partner.objects.all()
+    categories = Partner_Category.objects.all()
+    return render(request, 'archive-parceiro.html', {
+        'partners': partners,
+        'categories': categories
+    })
 
-def parceiro_perfil(request, slug):
-    return render(request, 'single-parceiro.html')
+def parceiro_perfil(request, id):
+    partner = get_object_or_404(Partner, id=id)
+    return render(request, 'single-parceiro.html', {'partner': partner})
 
 def participe(request):
     return render(request, 'participe.html')
@@ -27,3 +54,4 @@ def noticias(request):
 
 def contato(request):
     return render(request, 'contato.html')
+

@@ -1,14 +1,78 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>ICC</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-  </head>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Insper Consulting Club{% endblock %}</title>
 
-  <body>
-    {% block content %} {% endblock %}
-  </body>
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"> -->
+
+  <!-- CSS específico por página -->
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="icc-header">
+    <div class="icc-header-container">
+      <div class="icc-logo">
+        <a href="/">
+          <img src="{% static 'img/icc-logo.png' %}" alt="Insper Consulting Club">
+        </a>
+      </div>
+
+      <nav class="icc-nav">
+        <a href="/">Início</a>
+        <a href="/equipe/">Equipe</a>
+        <a href="/atividades/">Atividades</a>
+        <a href="/parceiros/">Parceiros</a>
+        <a href="/participe/" class="icc-cta">Participe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="icc-footer">
+    <div class="icc-footer-container">
+      <div class="icc-footer-left">
+        <h3>Insper Consulting Club</h3>
+        <p>Formando líderes para o mercado de consultoria.</p>
+      </div>
+
+      <div class="icc-footer-right">
+        <p>© 2026 Insper Consulting Club</p>
+        <p>contato@icc.com.br</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SOCIAL MEDIA ICONS -->
+  <div class="social-icons">
+    <a href="https://wa.me/" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/insperconsultingclub/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://www.instagram.com/insperconsultingclub/" target="_blank" class="social-icon instagram" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  {% block extra_js %}{% endblock %}
+</body>
 </html>

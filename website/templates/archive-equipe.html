@@ -1,1 +1,134 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/archive-equipe.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="equipe-hero">
+    <div class="container">
+        <span class="equipe-label">Nossa Equipe</span>
+        <h1>As pessoas por trás do ICC</h1>
+        <p>Conheça os membros que constroem, lideram e transformam o Insper Consulting Club.</p>
+    </div>
+</section>
+
+<!-- FILTERS -->
+<section class="equipe-filters">
+    <div class="container">
+        <div class="filters-bar">
+
+            <!-- Filtro por Função -->
+            <div class="filter-group">
+                <label class="filter-label">Cargo</label>
+                <div class="filter-pills" id="filter-position">
+                    <button class="pill active" data-position="all">Todos</button>
+                    {% for position in positions %}
+                    <button class="pill" data-position="{{ position.id }}">{{ position.title }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Filtro por Ano de Entrada -->
+            <div class="filter-group">
+                <label class="filter-label">Ano de entrada</label>
+                <div class="filter-pills" id="filter-year">
+                    <button class="pill active" data-year="all">Todos</button>
+                    {% for year in entry_years %}
+                    <button class="pill" data-year="{{ year }}">{{ year }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Toggle membros ativos / ex-membros -->
+            <div class="filter-group">
+                <label class="filter-label">Status</label>
+                <div class="filter-pills" id="filter-status">
+                    <button class="pill active" data-status="all">Todos</button>
+                    <button class="pill" data-status="active">Ativos</button>
+                    <button class="pill" data-status="alumni">Alumni</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Contador de resultados -->
+        <p class="results-count"><span id="visible-count">{{ members|length }}</span> membros encontrados</p>
+    </div>
+</section>
+
+<!-- TEAM GRID -->
+<section class="equipe-grid-section">
+    <div class="container">
+        <div class="team-grid" id="team-grid">
+            {% for member in members %}
+            <a href="{% url 'perfil_membro' member.name %}"
+               class="member-card"
+               data-position="{{ member.position.id }}"
+               data-year="{{ member.entry_date.year }}"
+               data-status="{% if member.exit_date %}alumni{% else %}active{% endif %}">
+
+                <div class="member-photo">
+                    {% if member.photo_url %}
+                        <img src="{{ member.photo_url.url }}" alt="{{ member.name }}">
+                    {% else %}
+                        <div class="member-photo-placeholder">
+                            <span>{{ member.name|slice:":1" }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="member-overlay">
+                        <span class="view-profile">Ver perfil →</span>
+                    </div>
+                </div>
+
+                <div class="member-info">
+                    <h4>{{ member.name }}</h4>
+                    <p class="member-position">{{ member.position.title }}</p>
+                    <div class="member-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            Entrada {{ member.entry_date.year }}
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-briefcase"></i>
+                            {{ member.number_of_projects }} projeto{% if member.number_of_projects != 1 %}s{% endif %}
+                        </span>
+                    </div>
+                    {% if not member.exit_date %}
+                    <span class="badge-active">Ativo</span>
+                    {% else %}
+                    <span class="badge-alumni">Alumni</span>
+                    {% endif %}
+                </div>
+            </a>
+            {% empty %}
+            <p class="empty-state">Nenhum membro encontrado.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Estado vazio após filtros -->
+        <div class="no-results" id="no-results" style="display: none;">
+            <i class="fas fa-users-slash"></i>
+            <p>Nenhum membro encontrado com os filtros selecionados.</p>
+            <button class="btn-secondary" id="reset-filters">Limpar filtros</button>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="equipe-cta">
+    <div class="container">
+        <h2>Quer fazer parte desta equipe?</h2>
+        <p>O ICC está sempre em busca de pessoas apaixonadas por consultoria e impacto real.</p>
+        <a href="{% url 'participe' %}" class="btn-primary">Quero participar</a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/archive-equipe.js' %}"></script>
+{% endblock %}

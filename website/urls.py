@@ -19,7 +19,7 @@ urlpatterns = [
     path('parceiros/', views.parceiros_index, name='parceiros'),
 
     # Parceiro Single
-    path('parceiros/<slug:slug>/', views.parceiro_perfil, name='perfil_parceiro'),
+    path('parceiros/<int:id>/', views.parceiro_perfil, name='perfil_parceiro'),
 
     # Processo seletivo 
     path('participe/', views.participe, name='participe'),

@@ -1,1 +1,71 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/parceiro.css' %}" />
+
+<div class="single-partner-container">
+
+    <a href="{% url 'parceiros' %}" class="back-link">
+        ← Voltar para Parceiros
+    </a>
+
+    <div class="partner-header">
+
+        <div class="partner-logo">
+            {% if partner.logo_url %}
+            <img src="{{ partner.logo_url.url }}" alt="{{ partner.name }}">
+            {% else %}
+            <img src="{% static 'partners/placeholder-logo.svg' %}" alt="Logo não disponível">
+            {% endif %}
+        </div>
+
+        <div class="partner-info">
+
+            <h1>{{ partner.name }}</h1>
+
+            {% if partner.category %}
+            <div class="category">
+                {{ partner.category.title }}
+            </div>
+            {% endif %}
+
+            <p class="description">
+                {{ partner.description }}
+            </p>
+
+            <div class="partner-contact">
+                <h3>Contato Institucional</h3>
+
+                {% if partner.contato %}
+                <p>
+                    <a href="tel:{{ partner.contato }}">
+                        {{ partner.contato }}
+                    </a>
+                </p>
+                {% else %}
+                <p><em>Informações não disponíveis</em></p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+    {% if partner.projects %}
+    <div class="projects-section">
+        <h2>Projetos Desenvolvidos em Conjunto</h2>
+
+        <ul class="projects-list">
+            {% for project in partner.projects.split %}
+            {% if project %}
+            <li>{{ project }}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>
+
+<script src="{% static 'js/parceiros.js' %}"></script>
+{% endblock %}

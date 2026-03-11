@@ -1,23 +1,167 @@
 {% extends "base.html" %}
-<div class="main">
-    <h1>Insper Consulting Club</h1>
-    <p>Organização Estudantil</p>
-</div>
-<div class="about">
-    <h2>Sobre Nós</h2>
-    <p>O Insper Consulting Club é uma organização estudantil dedicada a promover o interesse e o conhecimento em consultoria entre os estudantes do Insper. Nosso objetivo é fornecer aos membros oportunidades de aprendizado, networking e desenvolvimento profissional na área de consultoria.</p>
-    <ul>
-        <li>
-            <h3>17</h3>
-            <p>Membros</p>
-        </li>
-        <li>
-            <h3>+15</h3>
-            <p>Projetos realizados</p>
-        </li>
-        <li>
-            <h3>+150</h3>
-            <p>Horas de consultoria</p>
-        </li>
-    </ul>
-</div>
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <h2 class="hero-title">Insper Consulting Club</h2>
+        <h1>Formando líderes para o mercado de consultoria</h1>
+        <p>Conectamos a comunidade Insper às principais empresas do setor, desenvolvendo consultores de excelência.</p>
+
+        <a href="{% url 'participe' %}" class="btn-primary">Quero participar</a>
+    </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="stats">
+    <div class="container">
+        <h2>Nossos Números</h2>
+        <div class="stats-grid">
+            {% for stat in statistics %}
+            <div class="stat-item">
+                <h3>{{ stat.value }}</h3>
+                <p>{{ stat.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE NÓS -->
+<section class="about">
+    <div class="container">
+        <h2>Sobre o ICC</h2>
+
+        <p>
+            O Insper Consulting Club é uma organização estudantil dedicada a formar consultores e líderes de excelência.
+            Atuamos conectando alunos ao mercado por meio de desafios estratégicos, competições e projetos reais.
+        </p>
+
+        <div class="mission-vision-values">
+            <div>
+                <h3>Missão</h3>
+                <p>Formar consultores preparados para gerar impacto real no mercado.</p>
+            </div>
+            <div>
+                <h3>Visão</h3>
+                <p>Ser referência entre clubes de consultoria no Brasil.</p>
+            </div>
+            <div>
+                <h3>Valores</h3>
+                <p>Excelência, protagonismo, colaboração e orientação a resultados.</p>
+            </div>
+        </div>
+
+        <div class="video">
+            <!-- Substituir pelo link real -->
+            <iframe width="800" height="450" src="https://www.youtube.com/embed/VIDEO_ID"
+                title="Vídeo Institucional ICC" frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+
+        <a href="" class="btn-secondary">Saiba mais sobre o ICC</a>
+    </div>
+</section>
+
+<!-- ATIVIDADES -->
+<section class="activities">
+    <div class="container">
+        <h2>Nossas Atividades</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Desafio Estratégico ICC</h3>
+                <p>Competição proprietária com empresas parceiras para solução de problemas reais.</p>
+            </div>
+
+            <div class="card">
+                <h3>Projetos de Consultoria</h3>
+                <p>Atuação prática em projetos estratégicos com impacto direto em organizações.</p>
+            </div>
+
+            <div class="card">
+                <h3>Capacitações</h3>
+                <p>Treinamentos técnicos e desenvolvimento de habilidades analíticas.</p>
+            </div>
+
+            <div class="card">
+                <h3>Preparação para Cases</h3>
+                <p>Simulações e mentorias para processos seletivos em consultorias.</p>
+            </div>
+        </div>
+
+        <a href="" class="btn-primary">Conheça nossas atividades</a>
+    </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="team">
+    <div class="container">
+        <h2>Gestão Atual</h2>
+
+        <div class="team-grid">
+            {% for member in members %}
+            <a href="{% url 'perfil_membro' member.name %}" class="member-card">
+                <div class="member-photo">
+                    {% if member.photo_url %}
+                        <img src="{{ member.photo_url.url }}" alt="{{ member.name }}">
+                    {% else %}
+                        <div class="member-photo-placeholder">
+                            <span>{{ member.name|slice:":1" }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="member-overlay">
+                        <span class="view-profile">Ver perfil →</span>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>{{ member.name }}</h4>
+                    <p class="member-position">{{ member.position.title }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <a href="{% url 'equipe' %}" class="btn-secondary">Conheça nossa equipe</a>
+    </div>
+</section>
+
+<!-- PARCEIROS -->
+<section class="partners">
+    <div class="container">
+        <h2>Empresas Parceiras</h2>
+
+        <p>
+            Trabalhamos em parceria com empresas líderes do mercado,
+            aproximando talentos altamente qualificados das principais organizações de consultoria.
+        </p>
+
+        <div class="logos">
+            <img src="/static/img/parceiro1.png" alt="Empresa 1">
+            <img src="/static/img/parceiro2.png" alt="Empresa 2">
+            <img src="/static/img/parceiro3.png" alt="Empresa 3">
+            <img src="/static/img/parceiro4.png" alt="Empresa 4">
+        </div>
+
+        <a href="" class="btn-primary">Ver parceiros</a>
+    </div>
+</section>
+
+
+<!-- CALL TO ACTION FINAL -->
+<section class="final-cta">
+    <div class="container">
+        <h2>Faça parte do Insper Consulting Club</h2>
+        <p>Desenvolva-se, conecte-se ao mercado e gere impacto real.</p>
+
+        <a href="" class="btn-primary">Candidatar-se</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,1 +1,86 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/parceiro.css' %}" />
+
+<div class="archive-container">
+
+    <!-- Institutional Header -->
+    <div class="archive-header">
+        <h1>Parceiros Institucionais</h1>
+        <p>
+            As parcerias do ICC fortalecem nossa atuação no mercado de consultoria e ampliam
+            o impacto gerado aos nossos membros.
+        </p>
+    </div>
+    <!-- Logo Cloud Section -->
+    <div class="logo-cloud-section">
+        <h2>Nossos Parceiros</h2>
+        <div class="logo-cloud" id="logoCloud">
+            {% for partner in partners %}
+            <a href="{% url 'perfil_parceiro' partner.id %}" class="logo-cloud-item">
+                {% if partner.logo_url %}
+                <img src="{{ partner.logo_url.url }}" alt="{{ partner.name }}">
+                {% else %}
+                <img src="{% static 'partners/placeholder-logo.svg' %}" alt="Logo">
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Filters -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        {% for category in categories %}
+        <button class="filter-btn" data-filter="{{ category.title|lower|slugify }}">
+            {{ category.title }}
+        </button>
+        {% endfor %}
+    </div>
+
+    <!-- Grid -->
+    <div class="partners-grid">
+        {% for partner in partners %}
+        <a href="{% url 'perfil_parceiro' partner.id %}" 
+           class="partner-card" 
+           data-category="{{ partner.category.title|lower|slugify }}">
+
+            <div class="partner-card-image">
+                {% if partner.logo_url %}
+                <img src="{{ partner.logo_url.url }}" alt="{{ partner.name }}">
+                {% else %}
+                <img src="{% static 'partners/placeholder-logo.svg' %}" alt="Logo não disponível">
+                {% endif %}
+            </div>
+
+            <div class="partner-card-body">
+                <h3>{{ partner.name }}</h3>
+
+                {% if partner.category %}
+                <span class="partner-category">
+                    {{ partner.category.title }}
+                </span>
+                {% endif %}
+
+                <p>
+                    {{ partner.description|truncatewords:20 }}
+                </p>
+
+                <div class="partner-cta">
+                    Ver parceria
+                </div>
+            </div>
+
+        </a>
+        {% empty %}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px;">
+            <p style="color: #666;">Nenhum parceiro registrado no momento.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script src="{% static 'js/parceiros.js' %}"></script>
+{% endblock %}
