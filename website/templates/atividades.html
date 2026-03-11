@@ -3,6 +3,10 @@
 
 {% block title %}Atividades - Insper Consulting Club{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/atividades.css' %}">
+{% endblock %}
+
 {% block content %}
 
   <!-- Título da Página -->
@@ -40,8 +44,8 @@
   {% endfor %}
 
   {% else %}
-  <div style="padding: 60px 8%; text-align: center;">
-    <p style="color: var(--gray-500); font-size: 18px;">Nenhuma atividade cadastrada no momento.</p>
+  <div class="no-activities">
+    <p>Nenhuma atividade cadastrada no momento.</p>
   </div>
   {% endif %}
 

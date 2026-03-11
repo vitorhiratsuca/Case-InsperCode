@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Participe - Insper Consulting Club{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/participe.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -78,10 +83,18 @@
       processo seletivo do ICC.
     </p>
 
-    <form class="participe-form">
+    {% if submission_success %}
+    <div class="form-success-message">
+      <p>Obrigado pela sua inscrição! Nós analisaremos sua candidatura e entraremos em contato em breve.</p>
+    </div>
+    {% endif %}
+
+    <form class="participe-form" method="POST" action="{% url 'participe' %}">
+      {% csrf_token %}
+      
       <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required>
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required>
       </div>
 
       <div class="form-group">
@@ -90,13 +103,18 @@
       </div>
 
       <div class="form-group">
-        <label for="curso">Curso</label>
-        <input type="text" id="curso" name="curso">
+        <label for="course">Curso</label>
+        <input type="text" id="course" name="course" required>
       </div>
 
       <div class="form-group">
-        <label for="motivacao">Por que quer entrar no ICC?</label>
-        <textarea id="motivacao" name="motivacao"></textarea>
+        <label for="semester">Semestre</label>
+        <input type="text" id="semester" name="semester" placeholder="Ex: 5º semestre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Por que quer entrar no ICC?</label>
+        <textarea id="reason" name="reason" required></textarea>
       </div>
 
       <button type="submit" class="form-submit">Candidatar-se</button>

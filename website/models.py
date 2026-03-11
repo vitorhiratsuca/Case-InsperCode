@@ -118,5 +118,22 @@ class Statistic(models.Model):
 
     def __str__(self):
         return f"{self.value} - {self.description}"
+
+class Participant(models.Model):
+    '''
+    Modelo para os participantes que se inscrevem no ICC:
+    Nome, Email, Curso, Semestre e Motivo
+    '''
+    name = models.CharField(max_length=200, verbose_name='Nome')
+    email = models.EmailField(verbose_name='Email')
+    course = models.CharField(max_length=200, verbose_name='Curso')
+    semester = models.CharField(max_length=50, verbose_name='Semestre')
+    reason = models.TextField(verbose_name='Por que quer entrar no ICC?')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Data de inscrição')
     
+    class Meta:
+        verbose_name_plural = 'Participantes'
+    
+    def __str__(self):
+        return self.name
     

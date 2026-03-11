@@ -1,0 +1,129 @@
+.page-header {
+    padding: 180px 8% 80px 8%;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        var(--gradient-1),
+        var(--gradient-2),
+        var(--gradient-3),
+        var(--gradient-4)
+    );
+    color: var(--white);
+}
+
+.page-header h1 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.page-header p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+}
+
+.activities-toc {
+    padding: 40px 8%;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.activities-toc h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.activities-toc ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.activities-toc li a {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.activities-toc li a:hover {
+    background-color: var(--primary-red);
+    color: #ffffff;
+}
+
+.activity-section {
+    padding: 100px 8%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.activity-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--gray-900);
+    position: relative;
+}
+
+.activity-section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-red);
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+.activity-section p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--gray-700);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--gray-200);
+    margin: 0 auto;
+    width: 60%;
+}
+
+.no-activities {
+    padding: 120px 8%;
+    text-align: center;
+    font-size: 18px;
+    color: var(--gray-700);
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 150px 6% 60px 6%;
+    }
+
+    .page-header h1 {
+        font-size: 36px;
+    }
+
+    .activity-section {
+        padding: 80px 6%;
+    }
+
+    .activities-toc {
+        padding: 30px 6%;
+    }
+}

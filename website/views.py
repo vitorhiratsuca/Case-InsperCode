@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
-from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic, Activity
+from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic, Activity, Participant
 
 @require_http_methods(["GET"])
 def index(request):
@@ -48,6 +48,23 @@ def parceiro_perfil(request, id):
     return render(request, 'single-parceiro.html', {'partner': partner})
 
 def participe(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        course = request.POST.get('course')
+        semester = request.POST.get('semester')
+        reason = request.POST.get('reason')
+        
+        if all([name, email, course, semester, reason]):
+            Participant.objects.create(
+                name=name,
+                email=email,
+                course=course,
+                semester=semester,
+                reason=reason
+            )
+            return render(request, 'participe.html', {'submission_success': True})
+    
     return render(request, 'participe.html')
 
 def noticias(request):
