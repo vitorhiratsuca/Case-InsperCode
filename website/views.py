@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_http_methods
-from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic
+from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic, Activity
 
 @require_http_methods(["GET"])
 def index(request):
@@ -31,7 +31,8 @@ def perfil_membro(request, nome):
     return render(request, 'single-equipe.html', {'member': member})
 
 def atividades(request):
-    return render(request, 'atividades.html')
+    activities = Activity.objects.all()
+    return render(request, 'atividades.html', {'activities': activities})
 
 @require_http_methods(["GET"])
 def parceiros_index(request):
