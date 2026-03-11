@@ -1,43 +1,50 @@
-document.addEventListener('DOMContentLoaded', function () {
-    animateStats();
+window.addEventListener("load", function () {
+    positionLogos();
+    window.addEventListener("resize", positionLogos);
 });
 
-function animateStats() {
-    const numbers = document.querySelectorAll('.stat-number');
+function positionLogos() {
+    const cloud = document.getElementById("logoCloud");
+    if (!cloud) return;
 
-    numbers.forEach(el => {
-        const text = el.textContent.trim();
-        // If it's a date (contains '/'), do typing animation
-        if (text.includes('/')) {
-            let currentText = '';
-            let index = 0;
-            const typer = setInterval(() => {
-                currentText += text[index];
-                el.textContent = currentText;
-                index++;
-                if (index >= text.length) {
-                    clearInterval(typer);
-                }
-            }, 50);
-            return;
+    const items = Array.from(cloud.querySelectorAll(".logo-cloud-item"));
+    const total = items.length;
+    if (total === 0) return;
+
+    const width = cloud.clientWidth;
+    const height = cloud.clientHeight;
+
+    const centerX = width / 2;
+    const startY = height * 0.25;
+
+    // Define quantas "linhas" terá
+    const rows = Math.ceil(Math.sqrt(total));
+    let index = 0;
+
+    for (let r = 0; r < rows; r++) {
+
+        const itemsInRow = r + 1; // 1 em cima, 2 depois, 3 depois...
+        const rowWidth = itemsInRow * 120;
+        const rowStartX = centerX - rowWidth / 2;
+
+        for (let c = 0; c < itemsInRow && index < total; c++) {
+
+            const item = items[index];
+
+            const randomOffsetX = (Math.random() - 0.5) * 30;
+            const randomOffsetY = (Math.random() - 0.5) * 20;
+
+            const x = rowStartX + c * 120 + randomOffsetX;
+            const y = startY + r * 90 + randomOffsetY;
+
+            const scale = 0.8 + Math.random() * 0.4; // variação de tamanho
+
+            item.style.position = "absolute";
+            item.style.left = x + "px";
+            item.style.top = y + "px";
+            item.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+            index++;
         }
-
-        // For numbers, animate counting with '+'
-        const finalValue = parseInt(text.replace('+', ''));
-        if (isNaN(finalValue)) return; // Skip if not a number
-
-        let current = 0;
-        const increment = Math.ceil(finalValue / 30);
-
-        const counter = setInterval(() => {
-            current += increment;
-
-            if (current >= finalValue) {
-                el.textContent = '+' + finalValue;
-                clearInterval(counter);
-            } else {
-                el.textContent = '+' + current;
-            }
-        }, 30);
-    });
+    }
 }

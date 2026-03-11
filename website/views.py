@@ -6,7 +6,7 @@ from .models import Partner, Partner_Category, Team_Member, Member_Position, Sta
 def index(request):
     members = Team_Member.objects.filter(exit_date__isnull=True).order_by('position__power', 'name')[:6]
     statistics = Statistic.objects.all().order_by('order')
-    return render(request, 'index.html', {'members': members, 'statistics': statistics})
+    return render(request, 'index.html', {'members': members, 'statistics': statistics, 'partners': Partner.objects.all()})
 
 @require_http_methods(["GET"])
 def equipe_index(request):
@@ -45,7 +45,8 @@ def parceiros_index(request):
 
 def parceiro_perfil(request, id):
     partner = get_object_or_404(Partner, id=id)
-    return render(request, 'single-parceiro.html', {'partner': partner})
+    activities = Activity.objects.filter(responsible_partner=partner)
+    return render(request, 'single-parceiro.html', {'partner': partner, 'activities': activities})  
 
 def participe(request):
     if request.method == 'POST':

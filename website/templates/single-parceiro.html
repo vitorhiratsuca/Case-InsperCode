@@ -53,19 +53,22 @@
         </div>
     </div>
 
-    {% if partner.projects %}
+    {% if activities %}
     <div class="projects-section">
-        <h2>Projetos Desenvolvidos em Conjunto</h2>
+        <h2>Atividades em Conjunto com a Entidade</h2>
 
-        <ul class="projects-list">
-            {% for project in partner.projects.split %}
-            {% if project %}
-            <li>{{ project }}</li>
-            {% endif %}
+        <div class="projects-grid">
+            {% for activity in activities %}
+            <div class="project-card">
+                <h3>{{ activity.title }}</h3>
+                <p>{{ activity.description }}</p>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
     {% endif %}
+
+</div>
 
 </div>
 

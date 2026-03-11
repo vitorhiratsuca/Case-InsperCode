@@ -144,11 +144,19 @@
             aproximando talentos altamente qualificados das principais organizações de consultoria.
         </p>
 
-        <div class="logos">
-            <img src="/static/img/parceiro1.png" alt="Empresa 1">
-            <img src="/static/img/parceiro2.png" alt="Empresa 2">
-            <img src="/static/img/parceiro3.png" alt="Empresa 3">
-            <img src="/static/img/parceiro4.png" alt="Empresa 4">
+        <div class="logo-cloud-section">
+            <h2>Nossos Parceiros</h2>
+            <div class="logo-cloud" id="logoCloud">
+                {% for partner in partners %}
+                <a href="{% url 'perfil_parceiro' partner.id %}" class="logo-cloud-item">
+                    {% if partner.logo_url %}
+                    <img src="{{ partner.logo_url.url }}" alt="{{ partner.name }}">
+                    {% else %}
+                    <img src="{% static 'partners/placeholder-logo.svg' %}" alt="Logo">
+                    {% endif %}
+                </a>
+                {% endfor %}
+            </div>
         </div>
 
         <a href="{% url 'parceiros' %}" class="btn-primary">Ver parceiros</a>
@@ -165,5 +173,5 @@
         <a href="{% url 'participe' %}" class="btn-primary">Candidatar-se</a>
     </div>
 </section>
-
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock %}

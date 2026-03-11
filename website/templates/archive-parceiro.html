@@ -16,21 +16,6 @@
             o impacto gerado aos nossos membros.
         </p>
     </div>
-    <!-- Logo Cloud Section -->
-    <div class="logo-cloud-section">
-        <h2>Nossos Parceiros</h2>
-        <div class="logo-cloud" id="logoCloud">
-            {% for partner in partners %}
-            <a href="{% url 'perfil_parceiro' partner.id %}" class="logo-cloud-item">
-                {% if partner.logo_url %}
-                <img src="{{ partner.logo_url.url }}" alt="{{ partner.name }}">
-                {% else %}
-                <img src="{% static 'partners/placeholder-logo.svg' %}" alt="Logo">
-                {% endif %}
-            </a>
-            {% endfor %}
-        </div>
-    </div>
     <!-- Filters -->
     <div class="filter-container">
         <button class="filter-btn active" data-filter="all">Todos</button>

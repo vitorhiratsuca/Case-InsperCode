@@ -60,7 +60,6 @@ class Partner(models.Model):
     logo_url = models.ImageField(upload_to='partners/')
     name = models.CharField(max_length=200)
     description = models.TextField()
-    projects = models.TextField(null=True)
     category = models.ForeignKey(Partner_Category, on_delete=models.PROTECT, null=True)
     contato = models.CharField(max_length=20)
 
