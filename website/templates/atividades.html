@@ -1,14 +1,18 @@
 {% extends "base.html" %}
-<body>
+{% load static %}
+
+{% block title %}Atividades - Insper Consulting Club{% endblock %}
+
+{% block content %}
 
   <!-- Título da Página -->
-  <header>
+  <section class="page-header">
     <h1>Atividades do ICC</h1>
     <p>
         Nesta página, você encontra as atividades desenvolvidas ao longo do ano,
         com foco na realização de projetos de consultoria para empresas e na capacitação contínua dos membros.
     </p>
-  </header>
+  </section>
 
   <!-- Sumário com Âncoras -->
   <nav>
@@ -293,4 +297,4 @@
 
 </section>
 
-</body>
+{% endblock %}
