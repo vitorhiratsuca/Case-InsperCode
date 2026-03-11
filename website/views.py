@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.http import require_http_methods
 from .models import Partner, Partner_Category, Team_Member, Member_Position, Statistic
 
-# Create your views here.
+@require_http_methods(["GET"])
 def index(request):
     members = Team_Member.objects.filter(exit_date__isnull=True).order_by('position__power', 'name')[:6]
     statistics = Statistic.objects.all().order_by('order')
     return render(request, 'index.html', {'members': members, 'statistics': statistics})
 
+@require_http_methods(["GET"])
 def equipe_index(request):
     members = Team_Member.objects.all().order_by('position__power', 'name')
     positions = Member_Position.objects.all().order_by('power')
@@ -23,6 +25,7 @@ def equipe_index(request):
         'entry_years': entry_years,
     })
 
+@require_http_methods(["GET"])
 def perfil_membro(request, nome):
     member = get_object_or_404(Team_Member, name=nome)
     return render(request, 'single-equipe.html', {'member': member})
@@ -30,6 +33,7 @@ def perfil_membro(request, nome):
 def atividades(request):
     return render(request, 'atividades.html')
 
+@require_http_methods(["GET"])
 def parceiros_index(request):
     partners = Partner.objects.all()
     categories = Partner_Category.objects.all()
