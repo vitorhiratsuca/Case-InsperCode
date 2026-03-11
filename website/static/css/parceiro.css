@@ -8,6 +8,7 @@
 
 .archive-header {
     margin-bottom: 90px;
+    margin-top: 40px;
 }
 
 .archive-header h1 {
@@ -50,6 +51,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 80px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .partner-card {
@@ -61,6 +64,7 @@
     text-decoration: none;
     color: inherit;
     transition: 0.3s ease;
+    align-items: center;
 }
 
 .partner-card:hover {
